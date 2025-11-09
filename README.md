@@ -21,11 +21,17 @@
 - Docker
 - Открытые порты: 1022 (SSH), 1080 (HTTP)
 
-### Запуск
+### Сборка и запуск из исходников
 ```bash
 cd deploy
 docker build -t ctf_harry_potter .
 docker run -d -p 1022:1022 -p 1080:1080 --name ctf_harry_potter ctf_harry_potter
+```
+
+### Запуск из готового образа
+```bash
+cker pull ghcr.io/savo4ka/ctf_harry_potter:v1.0
+docker run -d -p 1022:1022 -p 1080:1080 --name ctf_harry_potter ghcr.io/savo4ka/ctf_harry_potter:v1.0
 ```
 
 ### Проверка работоспособности

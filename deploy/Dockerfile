@@ -3,7 +3,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # 1) Build tools and deps
 RUN apt-get update && \
-    apt-get install -y build-essential wget libpam0g-dev libselinux1-dev zlib1g-dev \
+    apt-get install -y vim nano build-essential wget libpam0g-dev libselinux1-dev zlib1g-dev \
                        pkg-config libssl-dev git ca-certificates \
                        openssh-server python3 python3-pip python3-venv supervisor && \
     rm -rf /var/lib/apt/lists/*
@@ -33,8 +33,8 @@ RUN useradd -m -s /bin/bash johny && \
 COPY --chown=joey:joey joey-files/notes.txt /home/joey/notes.txt
 
 # 7) Copy .bash_history for davy
-COPY --chown=davy:davy davy-files/.bash_history /home/davy/.bash_history
-RUN chmod 600 /home/davy/.bash_history
+COPY --chown=davy:davy davy-files/.bash_history /home/davy/webserver/.bash_history
+RUN chmod 600 /home/davy/webserver/.bash_history
 
 # 8) Setup webserver directory for davy
 RUN mkdir -p /home/davy/webserver && \
@@ -62,4 +62,4 @@ EXPOSE 1022 1080
 
 # 14) Start supervisor
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-```
+

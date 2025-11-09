@@ -24,8 +24,8 @@
 ### Запуск
 ```bash
 cd deploy
-docker build -t sudo-lfi-exploit .
-docker run -d -p 1022:1022 -p 1080:1080 --name sudo-ctf sudo-lfi-exploit
+docker build -t ctf_harry_potter .
+docker run -d -p 1022:1022 -p 1080:1080 --name ctf_harry_potter ctf_harry_potter
 ```
 
 ### Проверка работоспособности
@@ -40,8 +40,8 @@ ssh -p 1022 joey@localhost
 
 ### Остановка
 ```bash
-docker stop sudo-ctf
-docker rm sudo-ctf
+docker stop ctf_harry_potter
+docker rm ctf_harry_potter
 ```
 
 ## Выдать участникам
@@ -55,6 +55,9 @@ docker rm sudo-ctf
 Сервер: <IP>:1080 (HTTP)
 SSH: <IP>:1022
 ```
+
+**Цель:**
+Получить root доступ и прочитать хеш пароля пользователя johny в `/etc/shadow`
 
 ## Описание для площадки
 
@@ -72,7 +75,7 @@ SSH: <IP>:1022
 
 ## Флаг
 
-`FECTF{sudo_1.9.16p2_heap_overflow_privilege_escalation}`
+`FECTF{golden_snitch}`
 
 ---
 
@@ -82,10 +85,10 @@ SSH: <IP>:1022
 |--------------|--------|------------|
 | joey | Lf8vw7XJcR02E0bQlogp | Обычный пользователь, имеет notes.txt |
 | davy | Je8pw3dFmWRUqeFm3i3l | Владелец веб-сервера, пароль в password.txt |
-| johny | FECTF{harry_potter} | Пароль закодирован в base64 в /etc/shadow |
+| johny | FECTF{golden_snitch} | Пароль закодирован в base64 в /etc/shadow |
 
 ## Уязвимости
 
 1. **LFI в веб-приложении** - отсутствует проверка на path traversal
-2. **sudo 1.9.16p2** - CVE-2023-XXXXX (heap-based buffer overflow)
+2. **sudo 1.9.16p2** - CVE-2025-32463 (heap-based buffer overflow)
 3. **Информация в .bash_history** - подсказка о password.txt

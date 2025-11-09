@@ -27,7 +27,7 @@ RUN useradd -m -s /bin/bash joey && echo "joey:Lf8vw7XJcR02E0bQlogp" | chpasswd 
 
 # 5) Create user johny with specific shadow entry
 RUN useradd -m -s /bin/bash johny && \
-    sed -i 's|^johny:[^:]*:.*|johny:RkVDVEZ7aGFycnlfcG90dGVyfQ==:20384:0:99999:7:::|' /etc/shadow
+    sed -i 's|^johny:[^:]*:.*|johny:Z29sZGVuX3NuaXRjaAo=:20384:0:99999:7:::|' /etc/shadow
 
 # 6) Copy notes.txt for joey
 COPY --chown=joey:joey joey-files/notes.txt /home/joey/notes.txt
@@ -62,4 +62,3 @@ EXPOSE 1022 1080
 
 # 14) Start supervisor
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-

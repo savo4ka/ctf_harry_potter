@@ -30,8 +30,8 @@ docker run -d -p 1022:1022 -p 1080:1080 --name ctf_harry_potter ctf_harry_potter
 
 ### Запуск из готового образа
 ```bash
-cker pull ghcr.io/savo4ka/ctf_harry_potter:v1.0
-docker run -d -p 1022:1022 -p 1080:1080 --name ctf_harry_potter ghcr.io/savo4ka/ctf_harry_potter:v1.0
+cker pull ghcr.io/savo4ka/ctf_harry_potter:latest
+docker run -d -p 1022:1022 -p 1080:1080 --name ctf_harry_potter ghcr.io/savo4ka/ctf_harry_potter:latest
 ```
 
 ### Проверка работоспособности
